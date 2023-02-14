@@ -6,13 +6,14 @@
 
 
 ### Business Understanding
-This machine learning model will predict if a stock is likely to increase or decrease in price based on the analyst ratings. The model will be trained on the data from the Koyfin website. The data will be downloaded, not scraped, but using selenium and beautiful soup to automate the downloading process to make it less arduous. 
+This machine learning model aims to predict whether a stock's price is likely to increase or decrease based on analyst ratings. The data for the model will be obtained from the Koyfin website using selenium and beautiful soup to automate the downloading process. 
 
-The end model will predict 5-day stock movement based primarily on analyst ratings and the changing of those ratings. 
+The final model will predict the 5-day stock movement primarily based on analyst ratings and changes in those ratings.
 
+The final product will be a streamlit application which runs this model. 
 
 ### Stakeholders
-The stakeholders are any financial firm or individual investor who is interested in taking short-term positions in stocks. The model will be used to predict if a stock is likely to increase or decrease in price over the next five days (one business week), based primarily on analyst ratings and the changing of those ratings.
+The stakeholders for this project are any financial firms or individual investors who are interested in taking short-term positions in stocks. The model will be used to predict whether a stock is likely to increase or decrease in price over the next five business days, primarily based on analyst ratings and changes in those ratings.
 
 
 ### Evaluation Metrics
@@ -77,38 +78,40 @@ I utilized a variety of different models to train and test the data. The models 
 
 ## Conclusion
 
-The best performing model achieved an F1 score of .50 (rounded). It was an XGBoost model which was gridsearched with the following optimal parameters:
-- Max Depth of 50
-- Max Features of 'auto'
-- Min Samples Leaf of 1
-- Min Samples Split of 2
-- Number of Estimators of 1500
+The best performing model in this project had a rounded F1 score of .50 and was an XGBoost model, optimized using grid search with the following parameters:
 
-The most important features to the model include:
-- The 10-day price target (average) change. This is the average price target over all of the analysts for the stock, and the change in that average price target over the last 10 days.
-- Above median = False. This is a boolean feature which indicates if the stock price is above the median price of its price targets.
-- The 3-day price target (low) change. This is the lowest price target over all of the analysts for the stock, and the change in that lowest price target over the last 3 days.
-- The 3-day price target count change. This is the number of price targets over all of the analysts for the stock, and the change in that number of price targets over the last 3 days. This indicates when analysts are adding or removing price targets for the stock.
-- 180-day close change. This is the change in the stock price over the last 180 days.
-- Price target - low. This is the current low price target for the stock. 
-- 1-day Price Target - High Change. This is the change in the highest price target over all of the analysts for the stock over the last 1 day.
-- Above min = False. This is a boolean feature which indicates if the stock price is above the lowest price of its price targets.
-- 3-day close change. This is the change in the stock price over the last 3 days.
-- 10-day average analyst rating change. This is the average analyst rating over all of the analysts for the stock, and the change in that average analyst rating over the last 10 days.
+    Max Depth of 50
+    Max Features of 'auto'
+    Min Samples Leaf of 1
+    Min Samples Split of 2
+    Number of Estimators of 1500
 
+The most significant features for the model were:
+
+    10-day average price target change: the average of all analysts' price targets for a stock, and the change in that average over the last 10 days.
+    Above median = False: a boolean feature indicating whether the stock price is above the median price target.
+    3-day low price target change: the lowest price target of all analysts for a stock, and the change in that target over the last 3 days.
+    3-day price target count change: the number of price targets from all analysts for a stock, and the change in that number over the last 3 days, indicating when analysts are adding or removing targets.
+    180-day close change: the change in the stock price over the last 180 days.
+    Price target - low: the current low price target for a stock.
+    1-day high price target change: the change in the highest price target from all analysts for a stock over the last 1 day.
+    Above min = False: a boolean feature indicating whether the stock price is above the lowest price target.
+    3-day close change: the change in the stock price over the last 3 days.
+    10-day average analyst rating change: the average rating of all analysts for a stock, and the change in that average over the last 10 days.
 
 ## Future Work
-This is the first iteration of the model, and has lots of improvements to be made, including:
-- Adding more features
-    - Rate features
-    - Company data
-    - Sector data
-    - Industry data
-    - Earnings data
-- Expanded EDA
-- Streamlit Application for deployment
-- More model iterations
-- Solving the model based only on SINGLE stock data, not all stocks. How would this change things?
-- Solving the model based on a single sector, or industry. How would this change things?
-- Outlier removal (for instance, I know from experience that the analyst ratings for Tesla and the correlation between analyst ratings and stock price are not representative of the rest of the market. How would removing these outliers change the model?)
-- Adding more stocks. This was just with the SP100. What about the SP500? The Nasdaq?
+This project represents a preliminary iteration of the model, and there is much room for improvement, including:
+
+    Adding additional features, such as:
+        Rate features
+        Company data
+        Sector data
+        Industry data
+        Earnings data
+    Further exploratory data analysis
+    Deployment of a Streamlit application
+    Additional model iterations
+    Modeling based on individual stock data, rather than all stocks, to determine the impact of this change
+    Modeling based on a single sector or industry to examine the effect of this change
+    Outlier removal, for example, the analyst ratings and stock price correlation for Tesla may not be representative of the rest of the market and removing these outliers may impact the model results.
+    Adding more stocks, beyond just the SP100, such as the SP500 and Nasdaq.
