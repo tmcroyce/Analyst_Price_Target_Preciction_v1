@@ -103,11 +103,11 @@ The most significant features for the model were:
 This project represents a preliminary iteration of the model, and there is much room for improvement, including:
 
 Adding additional features, such as:
--        Rate features
--        Company data
--        Sector data
--        Industry data
--        Earnings data
+-    Rate features
+-    Company data
+-    Sector data
+-    Industry data
+-    Earnings data
 -    Further exploratory data analysis
 -    Deployment of a Streamlit application
 -    Additional model iterations
